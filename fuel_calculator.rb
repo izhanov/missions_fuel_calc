@@ -30,7 +30,7 @@ module FuelCalculator
   def launch_calc(mass, gravity, acc)
     return acc if mass.zero? || mass.negative?
 
-    fuel_mass = (BigDecimal(mass.to_s) * BigDecimal(gravity.to_s) * BigDecimal(0.042.to_s) - BigDecimal(33))
+    fuel_mass = launch_formula(mass, gravity).round(0, :down)
 
     acc += fuel_mass if fuel_mass.positive?
     launch_calc(fuel_mass, gravity, acc)
@@ -39,7 +39,7 @@ module FuelCalculator
   def land_calc(mass, gravity, acc)
     return acc if mass.zero? || mass.negative?
 
-    fuel_mass = (BigDecimal(mass) * BigDecimal(gravity.to_s) * BigDecimal(0.033.to_s) - BigDecimal(42))
+    fuel_mass = land_formula(mass, gravity).round(0, :down)
 
     acc += fuel_mass if fuel_mass.positive?
     land_calc(fuel_mass, gravity, acc)
@@ -51,5 +51,15 @@ module FuelCalculator
       result
     end
     counted_paths.dig(:launch) >= counted_paths.dig(:land)
+  end
+
+  def launch_formula(mass, gravity)
+    multiplication = BigDecimal(mass.to_s) * BigDecimal(gravity.to_s) * BigDecimal(0.042.to_s)
+    multiplication - BigDecimal(33)
+  end
+
+  def land_formula(mass, gravity)
+    multiplication = BigDecimal(mass.to_s) * BigDecimal(gravity.to_s) * BigDecimal(0.033.to_s)
+    multiplication - BigDecimal(42)
   end
 end

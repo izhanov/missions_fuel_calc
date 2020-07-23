@@ -16,3 +16,8 @@
 3. Run the code:
 `FuelCalculator.call(28801, [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]])`
 `=> 51951`
+
+## Additionally
+You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP
+`FuelCalculator.call(**APPOLO_11)`
+`=> 51951`

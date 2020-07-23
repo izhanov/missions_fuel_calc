@@ -7,17 +7,17 @@
 
 # Usage
 
-1. After cloning repo go to this directory:
+1. After cloning repo go to this directory: \n
 `cd missions_fuel_calc/`
 
-2. Start the console:
+2. Start the console: \n
 `bin/console`
 
-3. Run the code:
+3. Run the code: \n
 `FuelCalculator.call(28801, [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]])`
 `=> 51951`
 
 ## Additionally
-You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP
+You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP \n
 `FuelCalculator.call(**APPOLO_11)`
 `=> 51951`

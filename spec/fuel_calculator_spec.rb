@@ -26,15 +26,26 @@ RSpec.describe FuelCalculator do
         end
       end
 
-      context "when missions paths incorrect" do
-        it "raise ArgumentError with message" do
-          expect{ FuelCalculator.call(mass: 12_445, paths: [[:launch, g], [:land, g], [:land, g]]) }.to raise_error(ArgumentError, "Incorrect mission path")
+      context "when arguments correct" do
+        it "return needed weight of fuel" do
+          expect(FuelCalculator.call(mass: 28_801, paths: [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]]) ).to eq(51_898)
         end
       end
 
-      context "when arguments correct" do
-        it "return needed weight of fuel" do
-          expect(FuelCalculator.call(mass: 12_445, paths: [[:launch, g], [:land, g], [:launch, g]]) ).to be_a(Integer)
+      context "when calculate Mars mission" do
+        let(:mission) {
+          {
+            mass: 14_606,
+            paths: [
+              [:launch, 9.807],
+              [:land, 3.711],
+              [:launch, 3.711],
+              [:land, 9.807],
+            ]
+          }
+        }
+        it "return 33388" do
+          expect(FuelCalculator.call(**mission)).to eq 33_388
         end
       end
     end

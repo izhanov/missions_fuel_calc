@@ -20,4 +20,4 @@
 ## Additionally
 You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP
 `FuelCalculator.call(**APPOLO_11)`
-`=> 51951`
+`=> 51898`

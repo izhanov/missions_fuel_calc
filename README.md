@@ -14,6 +14,8 @@ The formula for fuel calculations for the launch is the following:
 The formula for fuel calculations for the land is the following:
 `mass * gravity * 0.033 - 42`
 
+But fuel adds weight to the ship, so it requires additional fuel, until additional fueil is 0 or negative. Additional fuel is calculated using the same formula from above.
+
 # Dependencies
 
 - Ruby `2.7.0`

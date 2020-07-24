@@ -1,5 +1,19 @@
 # missions_fuel_calc
 
+# Goals
+
+The goal of this application is to calculate fuel to launch from one planet of the Solar system, and to land on another planet of the Solar system, depending on flight route.
+
+Application receive a flight route as 2 arguments. First one is the flight ship **mass**, and second is an **array of 2 elements tuples**, with first element being **land** or **launch** directive, and second element is the target planet **gravity**.
+
+Arguments example for Appolo 11 mission: ```28801, [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]]```
+
+The formula for fuel calculations for the launch is the following:
+`mass * gravity * 0.042 - 33`
+
+The formula for fuel calculations for the land is the following:
+`mass * gravity * 0.033 - 42`
+
 # Dependencies
 
 - Ruby `2.7.0`
@@ -14,10 +28,12 @@
 `bin/console`
 
 3. Run the code:
+
 `FuelCalculator.call(28801, [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]])`
 `=> 51898`
 
 ## Additionally
 You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP
+
 `FuelCalculator.call(**APPOLO_11)`
 `=> 51898`

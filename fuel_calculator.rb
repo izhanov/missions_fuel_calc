@@ -39,13 +39,13 @@ module FuelCalculator
   def fuel_calc(mass, gravity, acc, action:)
     return acc if mass.zero? || mass.negative?
 
-    fuel_mass = formula(mass, gravity, **ODDS.dig(action)).round(0, :down)
+    fuel_mass = fuel_calc_formula(mass, gravity, **ODDS.dig(action)).round(0, :down)
 
     acc += fuel_mass if fuel_mass.positive?
     fuel_calc(fuel_mass, gravity, acc, action: action)
   end
 
-  def formula(mass, gravity, k:, l:)
+  def fuel_calc_formula(mass, gravity, k:, l:)
     multiplication = BigDecimal(mass.to_s) * BigDecimal(gravity.to_s) * BigDecimal(k.to_s)
     multiplication - BigDecimal(l)
   end

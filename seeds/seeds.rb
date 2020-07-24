@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 APPOLO_11 = {
-  mass: 28801,
+  mass: 28_801,
   paths: [
     [:launch, 9.807],
     [:land, 1.62],
@@ -11,7 +11,7 @@ APPOLO_11 = {
 }.freeze
 
 MARS_MISSION = {
-  mass: 14606,
+  mass: 14_606,
   paths: [
     [:launch, 9.807],
     [:land, 3.711],
@@ -21,7 +21,7 @@ MARS_MISSION = {
 }.freeze
 
 PASSENGER_SHIP = {
-  mass: 75432,
+  mass: 75_432,
   paths: [
     [:launch, 9.807],
     [:land, 1.62],

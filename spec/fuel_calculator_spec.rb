@@ -48,6 +48,25 @@ RSpec.describe FuelCalculator do
           expect(FuelCalculator.call(**mission)).to eq 33_388
         end
       end
+
+      context "when calculate Passenger ship mission" do
+        let(:mission) {
+          {
+            mass: 75_432,
+            paths: [
+              [:launch, 9.807],
+              [:land, 1.62],
+              [:launch, 1.62],
+              [:land, 3.711],
+              [:launch, 3.711],
+              [:land, 9.807]
+            ]
+          }
+        }
+        it "return 33388" do
+          expect(FuelCalculator.call(**mission)).to eq 212_161
+        end
+      end
     end
   end
 end

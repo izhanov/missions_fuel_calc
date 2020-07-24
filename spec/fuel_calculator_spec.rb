@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require_relative "../fuel_calculator"
+require_relative "../lib/fuel_calculator"
 
 RSpec.describe FuelCalculator do
   describe ".call" do
@@ -28,7 +28,15 @@ RSpec.describe FuelCalculator do
 
       context "when arguments correct" do
         it "return needed weight of fuel" do
-          expect(FuelCalculator.call(mass: 28_801, paths: [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]]) ).to eq(51_898)
+          expect(
+            FuelCalculator.call(
+              mass: 28_801,
+              paths: [
+                [:launch, 9.807], [:land, 1.62],
+                [:launch, 1.62], [:land, 9.807]
+              ]
+            )
+          ).to eq(51_898)
         end
       end
 

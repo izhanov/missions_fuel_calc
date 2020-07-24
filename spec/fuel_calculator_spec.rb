@@ -63,7 +63,7 @@ RSpec.describe FuelCalculator do
             ]
           }
         }
-        it "return 33388" do
+        it "return 212161" do
           expect(FuelCalculator.call(**mission)).to eq 212_161
         end
       end

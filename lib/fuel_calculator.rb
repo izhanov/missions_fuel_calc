@@ -30,19 +30,17 @@ module FuelCalculator
 
     action, gravity = paths.pop
 
-    fuel_mass = fuel_calc(mass, gravity, 0, action: action)
+    fuel_mass = fuel_calc(mass, gravity, action: action)
 
     acc += fuel_mass
     calculate(BigDecimal(mass + fuel_mass), paths, acc)
   end
 
-  def fuel_calc(mass, gravity, acc, action:)
-    return acc if mass.zero? || mass.negative?
-
+  def fuel_calc(mass, gravity, action:)
     fuel_mass = fuel_calc_formula(mass, gravity, **ODDS.dig(action)).round(0, :down)
+    return 0 if fuel_mass.zero? || fuel_mass.negative?
 
-    acc += fuel_mass if fuel_mass.positive?
-    fuel_calc(fuel_mass, gravity, acc, action: action)
+    fuel_mass + fuel_calc(fuel_mass, gravity, action: action)
   end
 
   def fuel_calc_formula(mass, gravity, k:, l:)

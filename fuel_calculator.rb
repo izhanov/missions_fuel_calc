@@ -20,7 +20,7 @@ module FuelCalculator
   def call(mass:, paths:)
     raise ArgumentError, "Mass should be positive" unless mass.positive?
 
-    calculate(mass, paths, 0).to_i
+    calculate(mass, paths, 0)
   end
 
   private
@@ -46,7 +46,7 @@ module FuelCalculator
   end
 
   def fuel_calc_formula(mass, gravity, k:, l:)
-    multiplication = BigDecimal(mass.to_s) * BigDecimal(gravity.to_s) * BigDecimal(k.to_s)
+    multiplication = BigDecimal(mass) * BigDecimal(gravity.to_s) * BigDecimal(k.to_s)
     multiplication - BigDecimal(l)
   end
 end

@@ -18,7 +18,7 @@ But fuel adds weight to the ship, so it requires additional fuel, until addition
 
 # Dependencies
 
-- Ruby `2.7.0`
+- Ruby `3.1.0`
 - RSpec `3.9.0`
 
 # Usage
@@ -30,13 +30,23 @@ But fuel adds weight to the ship, so it requires additional fuel, until addition
 `bin/console`
 
 3. Run the code:
+The `SpaceJam::FuelCalculator` class accepts a fuel calculation policy in the constructor. While there are only two: `SpaceJam::Policies::CargoMissionPolicy` & `SpaceJam::Policies::SatelliteMissionPolicy`.
 
-```mission_fuel = MissionFuel.new(calculator: Calculator.new)```
+Note that while use `SpaceJam::Policies::SatelliteMissionPolicy` :trajectory key args in `#call` must be an `Array<Symbol, Float>`!
 
-```mission_fuel.calculate(mass: 28801, paths: [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]]```
+```ruby
+cargo_policy = SpaceJam::Policies::CargoMissionPolicy.new
+# satellite_policy = SpaceJam::Policies::SatelliteMissionPolicy.new
+
+calculator = SpaceJam::FuelCalculator.new(policy: cargo_policy)
+calculator.call(mass: 28801, trajectory: [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]])
+
+# calculator.call(mass: 28801, trajectory: [:launch, 9.807])
+
+```
 
 ## Additionally
 You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP
 
-`mission_fuel.calculate(**APPOLO_11)`
+`calculator.call(**APPOLO_11)`
 `=> 51898`

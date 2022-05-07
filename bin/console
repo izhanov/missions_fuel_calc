@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 require_relative "../seeds/seeds"
-require_relative "../lib/mission_fuel"
-require_relative "../lib/calculator"
+require_relative "../lib/space_jam"
+
 
 require "irb"
 IRB.start(__FILE__)

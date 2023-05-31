@@ -37,7 +37,7 @@ Note that while use `SpaceJam::MissionsTypes::SatelliteMissionType` :trajectory 
 ```ruby
 mission_type = SpaceJam::MissionsTypes::CargoMissionType.new
 
-calculator = SpaceJam::FuelCalculator.new(mission_tpye: mission_type)
+calculator = SpaceJam::FuelCalculator.new(mission_type: mission_type)
 calculator.call(mass: 28801, trajectory: [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]])
 
 # satellite_mission_type = SpaceJam::MissionsTypes::SatelliteMissionType.new

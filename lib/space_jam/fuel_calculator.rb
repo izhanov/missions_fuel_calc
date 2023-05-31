@@ -2,16 +2,16 @@
 
 module SpaceJam
   class FuelCalculator
-    attr_reader :policy
+    attr_reader :mission_type
 
-    def initialize(policy:)
-      @policy = policy
+    def initialize(mission_type:)
+      @mission_type = mission_type
     end
 
     def call(mass:, trajectory:)
       raise ArgumentError, "Mass should be positive" unless mass.positive?
 
-      policy.apply(mass, trajectory)
+      mission_type.launch(mass, trajectory)
     end
   end
 end

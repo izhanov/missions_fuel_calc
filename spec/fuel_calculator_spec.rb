@@ -13,8 +13,8 @@ RSpec.describe SpaceJam::FuelCalculator do
 
   describe "#call" do
     context "when mass should be positive" do
-      let(:policy) { instance_double("MissionPolicy") }
-      let(:calculator) { described_class.new(policy: policy) }
+      let(:mission_type) { instance_double("MissionType") }
+      let(:calculator) { described_class.new(mission_type: mission_type) }
 
       it "raise ArgumentError" do
         expect{ calculator.call(mass: -12_432, steps: [[:launch, 9.807]]) }.to raise_error(ArgumentError)
@@ -23,7 +23,7 @@ RSpec.describe SpaceJam::FuelCalculator do
     end
 
     context "when calculate for cargo mission" do
-      let(:policy) { SpaceJam::Policies::CargoMissionPolicy.new }
+      let(:mission_type) { SpaceJam::MissionsTypes::CargoMissionType.new }
 
       context "for Appolo 11 mission" do
         let(:mission) {
@@ -39,7 +39,7 @@ RSpec.describe SpaceJam::FuelCalculator do
         }
         it "returns 51898" do
           expect(
-            described_class.new(policy: policy)
+            described_class.new(mission_type: mission_type)
               .call(**mission)
           ).to eq 51_898
         end
@@ -59,7 +59,7 @@ RSpec.describe SpaceJam::FuelCalculator do
         }
         it "returns 33388" do
           expect(
-            described_class.new(policy: policy)
+            described_class.new(mission_type: mission_type)
               .call(**mission)
           ).to eq 33_388
         end
@@ -81,7 +81,7 @@ RSpec.describe SpaceJam::FuelCalculator do
         }
         it "returns 212161" do
           expect(
-            described_class.new(policy: policy)
+            described_class.new(mission_type: mission_type)
               .call(**mission)
           ).to eq 212_161
         end
@@ -89,7 +89,7 @@ RSpec.describe SpaceJam::FuelCalculator do
     end
 
     context "when calculate for satellite mission" do
-      let(:policy) { SpaceJam::Policies::SatelliteMissionPolicy.new }
+      let(:mission_type) { SpaceJam::MissionsTypes::SatelliteMissionType.new }
 
       context "for Voyager 1" do
         let(:mission) {
@@ -101,7 +101,7 @@ RSpec.describe SpaceJam::FuelCalculator do
 
         it "returns 1132" do
           expect(
-            described_class.new(policy: policy)
+            described_class.new(mission_type: mission_type)
               .call(**mission)
           ).to eq 1_132
         end

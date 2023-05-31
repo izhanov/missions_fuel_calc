@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module SpaceJam
-  module Policies
-    class BasePolicy
+  module MissionsTypes
+    class BaseType
       COEFFICENTS = {
         launch: {
           k: 0.042,
@@ -14,7 +14,7 @@ module SpaceJam
         }
       }.freeze
 
-      def apply(mass, paths)
+      def launch(mass, paths)
         raise NotImplementedError, "Need implement in child class"
       end
 

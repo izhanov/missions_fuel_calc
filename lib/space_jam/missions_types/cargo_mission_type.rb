@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module SpaceJam
-  module Policies
-    class CargoMissionPolicy < BasePolicy
-      def apply(mass, trajectory)
+  module MissionsTypes
+    class CargoMissionType < BaseType
+      def launch(mass, trajectory)
         trajectory.reverse.reduce(0) do |result, (action, gravity)|
           fuel_mass = apply_formula(mass, gravity, **COEFFICENTS.dig(action))
           mass += fuel_mass

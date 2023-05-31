@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module SpaceJam
-  module Policies
-    class SatelliteMissionPolicy < BasePolicy
-      def apply(mass, trajectory)
+  module MissionsTypes
+    class SatelliteMissionType < BaseType
+      def launch(mass, trajectory)
         case trajectory
         in [Symbol => action, Float => gravity ]
           apply_formula(mass, gravity, **COEFFICENTS.dig(action))

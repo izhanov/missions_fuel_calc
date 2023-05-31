@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require_relative "../../lib/space_jam/policies/cargo_mission_policy"
+require_relative "../../lib/space_jam/missions_types/cargo_mission_type"
 
-RSpec.describe SpaceJam::Policies::CargoMissionPolicy do
+RSpec.describe SpaceJam::MissionsTypes::CargoMissionType do
   describe "#apply" do
 
     let(:mass) { 28_801 }
@@ -18,7 +18,7 @@ RSpec.describe SpaceJam::Policies::CargoMissionPolicy do
 
 
     it "calculate weight of fuel" do
-      expect(subject.apply(mass, trajectory)).to eq 51_898
+      expect(subject.launch(mass, trajectory)).to eq 51_898
     end
   end
 end

@@ -30,17 +30,17 @@ But fuel adds weight to the ship, so it requires additional fuel, until addition
 `bin/console`
 
 3. Run the code:
-The `SpaceJam::FuelCalculator` class accepts a fuel calculation policy in the constructor. While there are only two: `SpaceJam::Policies::CargoMissionPolicy` & `SpaceJam::Policies::SatelliteMissionPolicy`.
+The `SpaceJam::FuelCalculator` class accepts a fuel calculation policy in the constructor. While there are only two: `SpaceJam::MissionsTypes::CargoMissionType` & `SpaceJam::MissionsTypes::SatelliteMissionType`.
 
-Note that while use `SpaceJam::Policies::SatelliteMissionPolicy` :trajectory key args in `#call` must be an `Array<Symbol, Float>`!
+Note that while use `SpaceJam::MissionsTypes::SatelliteMissionType` :trajectory key args in `#call` must be an `Array<Symbol, Float>`!
 
 ```ruby
-cargo_policy = SpaceJam::Policies::CargoMissionPolicy.new
+mission_type = SpaceJam::MissionsTypes::CargoMissionType.new
 
-calculator = SpaceJam::FuelCalculator.new(policy: cargo_policy)
+calculator = SpaceJam::FuelCalculator.new(mission_tpye: mission_type)
 calculator.call(mass: 28801, trajectory: [[:launch, 9.807], [:land, 1.62], [:launch, 1.62], [:land, 9.807]])
 
-# satellite_policy = SpaceJam::Policies::SatelliteMissionPolicy.new
+# satellite_mission_type = SpaceJam::MissionsTypes::SatelliteMissionType.new
 # calculator.call(mass: 28801, trajectory: [:launch, 9.807])
 
 ```

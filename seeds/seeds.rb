@@ -2,7 +2,7 @@
 
 APPOLO_11 = {
   mass: 28_801,
-  paths: [
+  trajectory: [
     [:launch, 9.807],
     [:land, 1.62],
     [:launch, 1.62],
@@ -12,7 +12,7 @@ APPOLO_11 = {
 
 MARS_MISSION = {
   mass: 14_606,
-  paths: [
+  trajectory: [
     [:launch, 9.807],
     [:land, 3.711],
     [:launch, 3.711],
@@ -22,7 +22,7 @@ MARS_MISSION = {
 
 PASSENGER_SHIP = {
   mass: 75_432,
-  paths: [
+  trajectory: [
     [:launch, 9.807],
     [:land, 1.62],
     [:launch, 1.62],

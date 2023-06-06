@@ -15,7 +15,13 @@ module SpaceJam
       private
 
       def apply_formula(mass, gravity, coefficients)
-        fuel_mass = (BigDecimal(mass.to_s) * BigDecimal((gravity * coefficients.k).to_s) - BigDecimal(coefficients.l.to_s)).round(0, :down)
+        current_mass = BigDecimal(mass.to_s)
+        gravity_correction = BigDecimal((gravity * coefficients.k).to_s)
+        current_coefficient = BigDecimal(coefficients.l.to_s)
+
+        fuel_mass =
+          (current_mass * gravity_correction - current_coefficient).round(0, :down)
+
         (mass + fuel_mass).to_i
       end
     end

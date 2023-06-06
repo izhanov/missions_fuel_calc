@@ -3,16 +3,11 @@
 module SpaceJam
   module MissionsTypes
     class BaseType
-      COEFFICENTS = {
-        launch: {
-          k: 0.042,
-          l: 33
-        },
-        land: {
-          k: 0.033,
-          l: 42
-        }
-      }.freeze
+      attr_reader :config
+
+      def initialize
+        @config = SpaceJam.configuration
+      end
 
       def launch(mass, paths)
         raise NotImplementedError, "Need implement in child class"

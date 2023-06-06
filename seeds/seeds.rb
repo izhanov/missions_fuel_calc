@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-APPOLO_11 = {
+APOLLO_11 = {
   mass: 28_801,
   trajectory: [
     [:launch, 9.807],

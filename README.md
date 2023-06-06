@@ -46,7 +46,7 @@ calculator.call(mass: 28801, trajectory: [[:launch, 9.807], [:land, 1.62], [:lau
 ```
 
 ## Additionally
-You can use seeds: APPOLO_11, MARS_MISSION, PASSENGER_SHIP
+You can use seeds: APOLLO_11, MARS_MISSION, PASSENGER_SHIP
 
-`calculator.call(**APPOLO_11)`
+`calculator.call(**APOLLO_11)`
 `=> 51898`
